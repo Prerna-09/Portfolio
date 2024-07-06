@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import styled from 'styled-components'
-import { useRef } from 'react';
-// import emailjs from '@emailjs/browser';
-// import { Snackbar } from '@mui/material';
+
 
 const Container = styled.div`
 display: flex;
@@ -43,16 +42,7 @@ margin-top: 20px;
   }
 `;
 
-const Desc = styled.div`
-    font-size: 18px;
-    text-align: center;
-    max-width: 600px;
-    color: ${({ theme }) => theme.text_secondary};
-    @media (max-width: 768px) {
-        margin-top: 12px;
-        font-size: 16px;
-    }
-`;
+
 
 
 const ContactForm = styled.form`
@@ -88,20 +78,24 @@ const ContactInput = styled.input`
     border: 1px solid ${({ theme }) => theme.primary};
   }
 `
-
-const ContactInputMessage = styled.textarea`
-  flex: 1;
+const ContactMessage = styled.textarea`
+flex: 1;
   background-color: transparent;
   border: 1px solid ${({ theme }) => theme.text_secondary};
   outline: none;
   font-size: 18px;
   color: ${({ theme }) => theme.text_primary};
   border-radius: 12px;
-  padding: 12px 16px;
+  padding: 20px 16px;
   &:focus {
     border: 1px solid ${({ theme }) => theme.primary};
   }
 `
+
+
+
+
+
 
 const ContactButton = styled.input`
   width: 100%;
@@ -124,51 +118,59 @@ const ContactButton = styled.input`
 
 const Contact = () => {
 
-  //hooks
-  const [open, setOpen] = React.useState(false);
+
+  const[message, setmessage] = useState("");
   const form = useRef();
 
-  const handleSubmit = (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
-    // emailjs.sendForm('service_tox7kqs', 'template_nv7k7mj', form.current, 'SybVGsYS52j2TfLbi')
-    //   .then((result) => {
-    //     setOpen(true);
-    //     form.current.reset();
-    //   }, (error) => {
-    //     console.log(error.text);
-    //   });
-  }
 
+    emailjs
+      .sendForm('service_wdlo9ke', 'template_rsngdit', form.current, {
+        publicKey: 'JJOrJ9q_ulXpdmOeK',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+          setmessage('SUCCESS!')
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+  };
 
+  console.log(message)
 
   return (
+    <div id="contact">
     <Container>
       <Wrapper>
-        <Title>Contact</Title>
-        <Desc>Feel free to reach out to me for any questions or opportunities!</Desc>
-        <ContactForm ref={form} onSubmit={handleSubmit}>
-          <ContactTitle>Email Me 🚀</ContactTitle>
-          <ContactInput placeholder="Your Email" name="from_email" />
-          <ContactInput placeholder="Your Name" name="from_name" />
-          <ContactInput placeholder="Subject" name="subject" />
-          <ContactInputMessage placeholder="Message" rows="4" name="message" />
-          <ContactButton type="submit" value="Send" />
-        </ContactForm>
-        {/* <Snackbar
-          open={open}
-          autoHideDuration={6000}
-          onClose={()=>setOpen(false)}
-          message="Email sent successfully!"
-          severity="success"
-        /> */}
 
-         open={open}
-          autoHideDuration={6000}
-          onClose={()=>setOpen(false)}
-          message="Email sent successfully!"
-          severity="success"
+        
+        <Title>Contact</Title>
+        
+
+       
+        
+        <ContactForm ref={form} onSubmit={sendEmail}>
+          <ContactTitle></ContactTitle>
+          <ContactInput placeholder=" Email" name="from_email" />
+          <ContactInput placeholder="Name" name="to_name" />
+          <ContactMessage placeholder="message" name="message" />
+
+          
+          <ContactButton type="submit" value="Send" />
+          <div style={{fontSize:"30px" , color:"white" , marginLeft:"200px"}}>{message}</div>
+
+        </ContactForm>
+        
+
+
+        
       </Wrapper>
     </Container>
+    </div>
   )
 }
 

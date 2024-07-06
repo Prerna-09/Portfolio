@@ -6,8 +6,9 @@ export const HeroContainer = styled.div`
   background: ${({ theme }) => theme.card_light};
   display: flex;
   justify-content: center;
+  margin-top:-40px;
   position: relative;
-  padding: 80px 30px;
+  padding: 120px 30px;
   @media (max-width: 960px) {
     padding: 66px 16px;
   }

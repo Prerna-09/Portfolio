@@ -1,9 +1,10 @@
 
-import { Nav, NavLink, NavContainer, Span, NavLogo, NavItems, GitHubButton, ButtonContainer, MobileIcon, MobileMenu, MobileNavLogo, MobileLink } from "./NavStyledComponent"
+import { Nav, NavLink, NavContainer, Span, NavLogo, NavItems, GitHubButton, ButtonContainer, MobileIcon, MobileMenu, MobileLink } from "./NavStyledComponent"
 import { DiCssdeck } from 'react-icons/di';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useTheme } from 'styled-components';
 import { useState } from "react";
+import { Bio } from "../data/Data";
 
 
 
@@ -17,7 +18,7 @@ const Navbar = () => {
     <Nav>
       <NavContainer>
       <NavLogo to='/'>
-          <a style={{ display: "flex", alignItems: "center", color: "white", marginBottom: '20;', cursor: 'pointer' }}>
+          <a style={{ display: "flex", alignItems: "center", color: "white", marginBottom: '20', cursor: 'pointer' }}>
             <DiCssdeck size="3rem"/><Span>Portfolio</Span>
           </a>
         </NavLogo>
@@ -35,9 +36,7 @@ const Navbar = () => {
           <NavLink href='#projects'>Projects</NavLink>
           <NavLink href='#contact'>Contact</NavLink>
         </NavItems>
-        <ButtonContainer>
-          <GitHubButton>Github Profile</GitHubButton>
-        </ButtonContainer>
+      
         {
           isOpen &&
           <MobileMenu isOpen={isOpen}>
@@ -57,8 +56,7 @@ const Navbar = () => {
             <MobileLink href='#contact' onClick={() => {
               setIsOpen(!isOpen)
             }}>Contact</MobileLink>
-
-            <GitHubButton style={{padding: '10px 16px',background: `${theme.primary}`, color: 'white',width: 'max-content'}} href={Bio.github} target="_blank">Github Profile</GitHubButton>
+            
           </MobileMenu>
         }
          
