@@ -1,7 +1,7 @@
 
 import HeroBgAnimation from "./HeroAnimation.jsx"
 import { HeroContainer, HeroBg, HeroLeftContainer, Img, HeroRightContainer, HeroInnerContainer, TextLoop, Title, Span, SubTitle, ResumeButton } from './HeroStyle'
-import HeroImg from "../assets/heroimg.jpg"
+import HeroImg from "../assets/taxi.jpg"
 import Typewriter from 'typewriter-effect';
 import { Bio } from "../data/Data.js"
 
@@ -14,9 +14,9 @@ const Hero = () => {
                 </HeroBg>
                 <HeroInnerContainer >
                     <HeroLeftContainer id="Left">
-                        <Title>Hi, I am <br /> {Bio.name}</Title>
+                        <Title>Getting you where you want to go ❤ <br /><br/> {Bio.name}</Title>
                         <TextLoop>
-                            I am a
+                            
                             <Span>
                                 <Typewriter
                                     options={{
@@ -28,7 +28,7 @@ const Hero = () => {
                             </Span>
                         </TextLoop>
                         <SubTitle>{Bio.description}</SubTitle>
-                        <ResumeButton href={Bio.resume} target='display'>Github Profile</ResumeButton>
+                        <ResumeButton href={Bio.resume} target='display'>Check Profile</ResumeButton>
                     </HeroLeftContainer>
 
                     <HeroRightContainer id="Right">

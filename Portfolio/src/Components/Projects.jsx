@@ -10,9 +10,9 @@ const Projects = ({openModal,setOpenModal}) => {
   return (
     <Container id="projects">
       <Wrapper>
-        <Title>Projects</Title>
+        <Title>Destinations </Title>
         <Desc>
-           Here are some of my projects : 
+           Here are some places to explore : 
         </Desc>
         
            

@@ -148,7 +148,7 @@ const Contact = () => {
       <Wrapper>
 
         
-        <Title>Contact</Title>
+        <Title>Contact Form</Title>
         
 
        
